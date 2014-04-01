@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using iOSHelpers;
 using System.Threading.Tasks;
+using GoogleAnalytics.iOS;
 
 namespace ToddlerAddition
 {
@@ -25,6 +26,10 @@ namespace ToddlerAddition
 			base.ViewWillAppear (animated);
 			if (model == null)
 				newModel ();
+
+			GAI.SharedInstance.DefaultTracker.Set (GAIConstants.ScreenName, "Main View");
+
+			GAI.SharedInstance.DefaultTracker.Send (GAIDictionaryBuilder.CreateAppView ().Build ());
 
 
 		}

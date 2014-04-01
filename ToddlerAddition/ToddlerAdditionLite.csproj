@@ -44,7 +44,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\lite\iPhone\Debug</OutputPath>
+    <OutputPath>..\ToddlerAdditionLite\bin\iPhone\Debug</OutputPath>
     <DefineConstants>DEBUG;__MOBILE__;__IOS__;LITE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -60,7 +60,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\lite\iPhone\Release</OutputPath>
+    <OutputPath>..\ToddlerAdditionLite\bin\iPhone\Release</OutputPath>
     <DefineConstants>__MOBILE__;__IOS__;LITE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -70,7 +70,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\lite\iPhone\Ad-Hoc</OutputPath>
+    <OutputPath>..\ToddlerAdditionLite\bin\iPhone\Ad-Hoc</OutputPath>
     <DefineConstants>__MOBILE__;__IOS__;LITE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -82,7 +82,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\lite\iPhone\AppStore</OutputPath>
+    <OutputPath>..\ToddlerAdditionLite\bin\iPhone\AppStore</OutputPath>
     <DefineConstants>__MOBILE__;__IOS__;LITE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

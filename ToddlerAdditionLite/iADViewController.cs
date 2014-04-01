@@ -25,7 +25,7 @@ namespace ToddlerAddition
 
 			View.AddSubview (vc.View);
 
-			SetUpGoogle ();
+			SetupiAd ();
 
 
 		}
