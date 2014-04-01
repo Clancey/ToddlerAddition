@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{1DFB6531-198F-49D8-B064-288B71959ED4}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ToddlerAddition</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>ToddlerAddition</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;__MOBILE__;__IOS__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <DefineConstants>__MOBILE__;__IOS__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <ConsolePause>false</ConsolePause>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;__MOBILE__;__IOS__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <DefineConstants>__MOBILE__;__IOS__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Distribution: INTERACTIVE INNOVATIVE SOLUTIONS LLC</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
+    <CodesignProvision>F38A1ECD-A3D3-4A9D-99AD-037D9C03B17A</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <DefineConstants>__MOBILE__;__IOS__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <BuildIpa>true</BuildIpa>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <DefineConstants>__MOBILE__;__IOS__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+    <Reference Include="GoogleAnalytics.iOS">
+      <HintPath>..\Components\googleanalytics-3.0.3.2\lib\ios\GoogleAnalytics.iOS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Images\5.png" />
+    <BundleResource Include="Resources\Images\21.png" />
+    <BundleResource Include="Resources\Images\24.png" />
+    <BundleResource Include="Resources\Images\25 copy.png" />
+    <BundleResource Include="Resources\Images\25.png" />
+    <BundleResource Include="Resources\Images\31.png" />
+    <BundleResource Include="Resources\Images\33.png" />
+    <BundleResource Include="Resources\Images\38.png" />
+    <BundleResource Include="Resources\Images\39.png" />
+    <BundleResource Include="Resources\Images\40.png" />
+    <BundleResource Include="Resources\Images\41 copy.png" />
+    <BundleResource Include="Resources\Images\41.png" />
+    <BundleResource Include="Resources\Images\42 copy 2.png" />
+    <BundleResource Include="Resources\Images\42 copy.png" />
+    <BundleResource Include="Resources\Images\42.png" />
+    <BundleResource Include="Resources\Images\43.png" />
+    <BundleResource Include="Resources\Images\44 copy.png" />
+    <BundleResource Include="Resources\Images\44.png" />
+    <BundleResource Include="Resources\Images\45 copy.png" />
+    <BundleResource Include="Resources\Images\45.png" />
+    <BundleResource Include="Resources\Images\46.png" />
+    <BundleResource Include="Resources\Images\47 copy.png" />
+    <BundleResource Include="Resources\Images\47.png" />
+    <BundleResource Include="Resources\Images\48.png" />
+    <BundleResource Include="Resources\Images\49.png" />
+    <BundleResource Include="Resources\Images\51.png" />
+    <BundleResource Include="Resources\Images\52.png" />
+    <BundleResource Include="Resources\Images\53.png" />
+    <BundleResource Include="Resources\Images\54 copy.png" />
+    <BundleResource Include="Resources\Images\54.png" />
+    <BundleResource Include="Resources\Images\55.png" />
+    <BundleResource Include="Resources\Images\56.png" />
+    <BundleResource Include="Resources\Images\58.png" />
+    <BundleResource Include="Resources\Images\59.png" />
+    <BundleResource Include="Resources\Images\60.png" />
+    <BundleResource Include="Resources\Images\61.png" />
+    <BundleResource Include="Resources\Images\63.png" />
+    <BundleResource Include="Resources\Images\64.png" />
+    <BundleResource Include="Resources\Images\68.png" />
+    <BundleResource Include="Resources\Images\69.png" />
+    <BundleResource Include="Resources\Images\70.png" />
+    <BundleResource Include="Resources\Images\71.png" />
+    <BundleResource Include="Resources\Images\73 copy.png" />
+    <BundleResource Include="Resources\Images\73.png" />
+    <BundleResource Include="Resources\Images\75 copy.png" />
+    <BundleResource Include="Resources\Images\75.png" />
+    <BundleResource Include="Resources\Images\76.png" />
+    <BundleResource Include="Resources\Images\77.png" />
+    <BundleResource Include="Resources\Images\78.png" />
+    <BundleResource Include="Resources\Images\82.png" />
+    <BundleResource Include="Resources\Images\83.png" />
+    <BundleResource Include="Resources\Images\85.png" />
+    <BundleResource Include="Resources\Images\86.png" />
+    <BundleResource Include="Resources\Images\88 copy.png" />
+    <BundleResource Include="Resources\Images\88.png" />
+    <BundleResource Include="Resources\Images\89.png" />
+    <BundleResource Include="Resources\Images\90.png" />
+    <BundleResource Include="Resources\Images\91.png" />
+    <BundleResource Include="Resources\Images\92.png" />
+    <BundleResource Include="Resources\Images\93.png" />
+    <BundleResource Include="Resources\Images\94 copy.png" />
+    <BundleResource Include="Resources\Images\94.png" />
+    <BundleResource Include="Resources\Images\95.png" />
+    <BundleResource Include="Resources\Images\97 copy.png" />
+    <BundleResource Include="Resources\Images\97.png" />
+    <BundleResource Include="Resources\Images\98.png" />
+    <BundleResource Include="Resources\Images\99 copy.png" />
+    <BundleResource Include="Resources\Images\99.png" />
+    <BundleResource Include="Resources\Images\101.png" />
+    <BundleResource Include="Resources\Images\102 copy.png" />
+    <BundleResource Include="Resources\Images\102.png" />
+    <BundleResource Include="Resources\Images\103.png" />
+    <BundleResource Include="Resources\Images\104 copy.png" />
+    <BundleResource Include="Resources\Images\104.png" />
+    <BundleResource Include="Resources\Images\105 copy 2.png" />
+    <BundleResource Include="Resources\Images\105 copy 3.png" />
+    <BundleResource Include="Resources\Images\105 copy.png" />
+    <BundleResource Include="Resources\Images\105.png" />
+    <BundleResource Include="Resources\Images\106 copy 2.png" />
+    <BundleResource Include="Resources\Images\106 copy.png" />
+    <BundleResource Include="Resources\Images\106.png" />
+    <BundleResource Include="Resources\Images\107 copy.png" />
+    <BundleResource Include="Resources\Images\107.png" />
+    <BundleResource Include="Resources\Images\108 copy.png" />
+    <BundleResource Include="Resources\Images\108.png" />
+    <BundleResource Include="Resources\Images\109 copy.png" />
+    <BundleResource Include="Resources\Images\109.png" />
+    <BundleResource Include="Resources\Images\110 copy.png" />
+    <BundleResource Include="Resources\Images\110.png" />
+    <BundleResource Include="Resources\Images\111.png" />
+    <BundleResource Include="Resources\Images\113.png" />
+    <BundleResource Include="Resources\Images\116.png" />
+    <BundleResource Include="Resources\Images\118.png" />
+    <BundleResource Include="Resources\Images\119.png" />
+    <BundleResource Include="Resources\Images\121.png" />
+    <BundleResource Include="Resources\Images\123 copy.png" />
+    <BundleResource Include="Resources\Images\123.png" />
+    <BundleResource Include="Resources\Images\124 copy.png" />
+    <BundleResource Include="Resources\Images\124.png" />
+    <BundleResource Include="Resources\Images\126.png" />
+    <BundleResource Include="Resources\Images\128.png" />
+    <BundleResource Include="Resources\Images\131.png" />
+    <BundleResource Include="Resources\Images\132 copy.png" />
+    <BundleResource Include="Resources\Images\132.png" />
+    <BundleResource Include="Resources\Images\133 copy.png" />
+    <BundleResource Include="Resources\Images\133.png" />
+    <BundleResource Include="Resources\Images\134.png" />
+    <BundleResource Include="Resources\Images\135.png" />
+    <BundleResource Include="Resources\Images\136.png" />
+    <BundleResource Include="Resources\Images\138.png" />
+    <BundleResource Include="Resources\Images\139 copy.png" />
+    <BundleResource Include="Resources\Images\139.png" />
+    <BundleResource Include="Resources\Images\140.png" />
+    <BundleResource Include="Resources\Images\141.png" />
+    <BundleResource Include="Resources\Images\143.png" />
+    <BundleResource Include="Resources\Images\144.png" />
+    <BundleResource Include="Resources\Images\145 copy 2.png" />
+    <BundleResource Include="Resources\Images\145 copy.png" />
+    <BundleResource Include="Resources\Images\145.png" />
+    <BundleResource Include="Resources\Images\146 copy.png" />
+    <BundleResource Include="Resources\Images\146.png" />
+    <BundleResource Include="Resources\Images\147.png" />
+    <BundleResource Include="Resources\Images\149.png" />
+    <BundleResource Include="Resources\Images\152 copy.png" />
+    <BundleResource Include="Resources\Images\152.png" />
+    <BundleResource Include="Resources\Images\153 copy.png" />
+    <BundleResource Include="Resources\Images\153.png" />
+    <BundleResource Include="Resources\Images\154.png" />
+    <BundleResource Include="Resources\Images\155 copy.png" />
+    <BundleResource Include="Resources\Images\155.png" />
+    <BundleResource Include="Resources\Images\156.png" />
+    <BundleResource Include="Resources\Images\157 copy.png" />
+    <BundleResource Include="Resources\Images\157.png" />
+    <BundleResource Include="Resources\Images\158.png" />
+    <BundleResource Include="Resources\Images\159.png" />
+    <BundleResource Include="Resources\Images\165.png" />
+    <BundleResource Include="Resources\Images\172.png" />
+    <BundleResource Include="Resources\Images\173.png" />
+    <BundleResource Include="Resources\Images\177.png" />
+    <BundleResource Include="Resources\Images\178.png" />
+    <BundleResource Include="Resources\Images\179.png" />
+    <BundleResource Include="Resources\Images\180.png" />
+    <BundleResource Include="Resources\Images\187.png" />
+    <BundleResource Include="Resources\Images\191.png" />
+    <BundleResource Include="Resources\Images\198.png" />
+    <BundleResource Include="Resources\Images\199.png" />
+    <BundleResource Include="Resources\Images\203.png" />
+    <BundleResource Include="Resources\Images\204.png" />
+    <BundleResource Include="Resources\Images\205.png" />
+    <BundleResource Include="Resources\Images\207.png" />
+    <BundleResource Include="Resources\Images\213.png" />
+    <BundleResource Include="Resources\Images\216.png" />
+    <BundleResource Include="Resources\Images\257.png" />
+    <BundleResource Include="Resources\Images\263.png" />
+    <BundleResource Include="Resources\Images\286.png" />
+    <BundleResource Include="Resources\Images\291.png" />
+    <BundleResource Include="Resources\Images\296.png" />
+    <BundleResource Include="Resources\Images\297.png" />
+    <BundleResource Include="Resources\Images\298.png" />
+    <BundleResource Include="Resources\Images\300.png" />
+    <BundleResource Include="Resources\Images\305.png" />
+    <BundleResource Include="Resources\Images\309.png" />
+    <BundleResource Include="Resources\Images\313.png" />
+    <BundleResource Include="Resources\Images\318.png" />
+    <BundleResource Include="Resources\Images\320.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-120.png" />
+    <BundleResource Include="Resources\Icon-iPad-Spotlight-iOS7%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-50.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Spotlight-iOS7.png" />
+    <BundleResource Include="Resources\Icon-Spotlight-iOS7%402x.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Audio\Congrats\congrats1.mp3" />
+    <BundleResource Include="Resources\Audio\Congrats\congrats2.mp3" />
+    <BundleResource Include="Resources\Audio\Congrats\congrats3.mp3" />
+    <BundleResource Include="Resources\Audio\Congrats\congrats4.mp3" />
+    <BundleResource Include="Resources\Audio\Congrats\congrats5.mp3" />
+    <BundleResource Include="Resources\Audio\Congrats\congrats6.mp3" />
+    <BundleResource Include="Resources\Audio\Equals\equals.mp3" />
+    <BundleResource Include="Resources\Audio\Intro\instructions1.mp3" />
+    <BundleResource Include="Resources\Audio\Intro\instructions2.mp3" />
+    <BundleResource Include="Resources\Audio\Intro\instructions3.mp3" />
+    <BundleResource Include="Resources\Audio\Intro\instructions4.mp3" />
+    <BundleResource Include="Resources\Audio\Plus\plus.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\01\1.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\03\3.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\02\2.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\04\4.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\05\5.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\06\6.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\07\7.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\08\8.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\09\9.mp3" />
+    <BundleResource Include="Resources\Audio\Numbers\10\10.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\02\2e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\10\10e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\03\3e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\04\4e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\05\5e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\06\6e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\07\7e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\08\8e.mp3" />
+    <BundleResource Include="Resources\Audio\NumbersExcited\09\9e.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Ui\AdditionView.cs" />
+    <Compile Include="Ui\CardView.cs" />
+    <Compile Include="Ui\ItemView.cs" />
+    <Compile Include="Ui\MainViewController.cs" />
+    <Compile Include="Ui\TotalView.cs" />
+    <Compile Include="Helpers\ColorSelector.cs" />
+    <Compile Include="Helpers\SoundPlayer.cs" />
+    <Compile Include="Helpers\ImageLoader.cs" />
+    <Compile Include="Helpers\ItemHelper.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Ui\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\Audio\" />
+    <Folder Include="Resources\Audio\Numbers\" />
+    <Folder Include="Resources\Audio\Congrats\" />
+    <Folder Include="Resources\Audio\Intro\" />
+    <Folder Include="Resources\Audio\Equals\" />
+    <Folder Include="Resources\Audio\Plus\" />
+    <Folder Include="Resources\Audio\Numbers\02\" />
+    <Folder Include="Resources\Audio\Numbers\01\" />
+    <Folder Include="Resources\Audio\Numbers\03\" />
+    <Folder Include="Resources\Audio\Numbers\04\" />
+    <Folder Include="Resources\Audio\Numbers\05\" />
+    <Folder Include="Resources\Audio\Numbers\06\" />
+    <Folder Include="Resources\Audio\Numbers\07\" />
+    <Folder Include="Resources\Audio\Numbers\08\" />
+    <Folder Include="Resources\Audio\Numbers\09\" />
+    <Folder Include="Resources\Audio\Numbers\10\" />
+    <Folder Include="Resources\Audio\NumbersExcited\" />
+    <Folder Include="Resources\Audio\NumbersExcited\02\" />
+    <Folder Include="Resources\Audio\NumbersExcited\03\" />
+    <Folder Include="Resources\Audio\NumbersExcited\04\" />
+    <Folder Include="Resources\Audio\NumbersExcited\05\" />
+    <Folder Include="Resources\Audio\NumbersExcited\06\" />
+    <Folder Include="Resources\Audio\NumbersExcited\07\" />
+    <Folder Include="Resources\Audio\NumbersExcited\08\" />
+    <Folder Include="Resources\Audio\NumbersExcited\09\" />
+    <Folder Include="Resources\Audio\NumbersExcited\10\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\iOSHelpers\iOSHelpers\iOSHelpers.csproj">
+      <Project>{4483B8BC-4226-4F9A-9418-4E554BF5EF1D}</Project>
+      <Name>iOSHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="googleanalytics">
+      <Version>3.0.3.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+</Project>
