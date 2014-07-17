@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOSHelpers", "..\iOSHelpers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToddlerAdditionLite", "ToddlerAddition\ToddlerAdditionLite.csproj", "{8B871071-725A-4B1F-8E1C-E7A4584B7871}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{348E0D25-23FF-408B-9956-3EE62D1EDA84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator

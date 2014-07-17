@@ -90,6 +90,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -342,23 +345,11 @@
     </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="Helpers\ColorSelector.cs" />
-    <Compile Include="Helpers\ImageLoader.cs" />
-    <Compile Include="Helpers\ItemHelper.cs" />
-    <Compile Include="Helpers\SoundPlayer.cs" />
-    <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\ViewModel.cs" />
-    <Compile Include="Ui\AdditionView.cs" />
-    <Compile Include="Ui\CardView.cs" />
-    <Compile Include="Ui\ItemView.cs" />
-    <Compile Include="Ui\MainViewController.cs" />
-    <Compile Include="Ui\TotalView.cs" />
     <Compile Include="..\ToddlerAdditionLite\iADViewController.cs">
       <Link>Ui\iADViewController.cs</Link>
     </Compile>
   </ItemGroup>
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="..\ToddlerAdditionLite\Info.plist">

@@ -315,26 +315,9 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\ViewModel.cs" />
-    <Compile Include="Ui\AdditionView.cs" />
-    <Compile Include="Ui\CardView.cs" />
-    <Compile Include="Ui\ItemView.cs" />
-    <Compile Include="Ui\MainViewController.cs" />
-    <Compile Include="Ui\TotalView.cs" />
-    <Compile Include="Helpers\ColorSelector.cs" />
-    <Compile Include="Helpers\SoundPlayer.cs" />
-    <Compile Include="Helpers\ImageLoader.cs" />
-    <Compile Include="Helpers\ItemHelper.cs" />
-  </ItemGroup>
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Ui\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Audio\" />
     <Folder Include="Resources\Audio\Numbers\" />
