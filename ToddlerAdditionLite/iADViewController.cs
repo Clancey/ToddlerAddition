@@ -57,10 +57,12 @@ namespace ToddlerAddition
 					iAdView.RemoveFromSuperview ();
 				}
 				if (googleAdView == null) {
-					googleAdView = new GADBannerView (size: GADAdSizeCons.SmartBannerLandscape, origin: new PointF (0, 0)) {
+					var or =  this.ForOrientation (this.InterfaceOrientation);
+					googleAdView = new GADBannerView (size: or, origin: new PointF (0, 0)) {
 						AdUnitID = AdmobID,
 						RootViewController = this
 					};
+
 					googleAdView.DidReceiveAd += (object sender, EventArgs e) => {
 						if (adView == null)
 							return;
@@ -93,6 +95,23 @@ namespace ToddlerAddition
 		{
 			base.DidRotate (fromInterfaceOrientation);
 			Resize ();
+		}
+		public override void WillRotate (UIInterfaceOrientation toInterfaceOrientation, double duration)
+		{
+			base.WillRotate (toInterfaceOrientation, duration);
+
+			if (googleAdView != null)
+				googleAdView.AdSize = ForOrientation (toInterfaceOrientation);
+		}
+
+		GADAdSize ForOrientation(UIInterfaceOrientation orientation)
+		{
+			switch (orientation) {
+			case UIInterfaceOrientation.LandscapeLeft:
+			case UIInterfaceOrientation.LandscapeRight:
+				return GADAdSizeCons.SmartBannerLandscape;
+			}
+			return GADAdSizeCons.SmartBannerPortrait;
 		}
 
 		public override void ViewDidAppear (bool animated)
