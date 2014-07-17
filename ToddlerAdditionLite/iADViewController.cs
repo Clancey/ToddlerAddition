@@ -26,6 +26,7 @@ namespace ToddlerAddition
 			View.AddSubview (vc.View);
 
 			SetupiAd ();
+			//SetUpGoogle ();
 
 
 		}
@@ -99,14 +100,30 @@ namespace ToddlerAddition
 			base.ViewDidAppear (animated);
 			Resize ();
 		}
-
+		float AdHeight
+		{
+			get{
+				if(iAdView == null && adView == null)
+					return 0;
+				if (iAdView == null || iAdView.Hidden)
+					return adView.Frame.Height;
+				return iAdView.Frame.Height;
+			}
+		}
 		void Resize ()
 		{
 
 			UIView.Animate (.25,
 				() => {
-					if (iAdView != null && iAdView.Hidden == false) {
-						vc.View.Frame = new RectangleF (0, 0, this.View.Bounds.Width, this.View.Bounds.Height - iAdView.Frame.Height);
+					if (iAdView != null && !iAdView.Hidden || (adView != null && !adView.Hidden)) {
+						var frame = new RectangleF (0, 0, this.View.Bounds.Width, this.View.Bounds.Height - AdHeight);
+						vc.View.Frame = frame;
+						if(adView != null)
+						{
+							frame.Y = frame.Bottom;
+							frame.Height = AdHeight;
+							adView.Frame = frame;
+						}
 					} else {
 						vc.View.Frame = View.Bounds;
 					}
