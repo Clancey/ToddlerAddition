@@ -26,12 +26,15 @@ namespace ToddlerAddition
 			base.ViewWillAppear (animated);
 			if (model == null)
 				newModel ();
-
+			view.Parent = this;
 			GAI.SharedInstance.DefaultTracker.Set (GAIConstants.ScreenName, "Main View");
 
 			GAI.SharedInstance.DefaultTracker.Send (GAIDictionaryBuilder.CreateAppView ().Build ());
-
-
+		}
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+			view.Parent = null;
 		}
 
 		void newModel()
@@ -64,7 +67,8 @@ namespace ToddlerAddition
 			await SoundPlayer.SpeakEquals ();
 			view.UpdateTotal ();
 
-			await Task.Delay(300);
+			if(model.Level == 0)
+				await Task.Delay(300);
 
 			view.PulseTotal ();
 			await SoundPlayer.SpeakExcited(model.Total);
@@ -76,11 +80,15 @@ namespace ToddlerAddition
 
 		class MainView : UIView
 		{
+			public MainViewController Parent;
 			CardView firstCard;
 			CardView secondCard;
 			TotalView totalView;
 			UILabel operatorLabel;
-			UILabel equalLabel;
+			UIButton equalLabel;
+			LongPressButton settingsButton;
+			NumberBar topNumbers;
+			NumberBar bottomNumbers;
 			public MainView()
 			{
 				BackgroundColor = UIColor.White;
@@ -92,13 +100,30 @@ namespace ToddlerAddition
 					Text = "+",
 				});
 				AddSubview(secondCard = new CardView());
-				AddSubview(equalLabel = new UILabel{
-					AdjustsFontSizeToFitWidth = true,
+				AddSubview(equalLabel = new SimpleButton{
+					//AdjustsFontSizeToFitWidth = true,
 					Font = UIFont.BoldSystemFontOfSize(100),
-					TextAlignment = UITextAlignment.Center,
-					Text = "=",
+					//TextAlignment = UITextAlignment.Center,
+					TitleColor = UIColor.Black,
+					Title = "=",
+					Tapped = s => model.TappedEquals ()
 				});
-				AddSubview(totalView = new TotalView());
+				equalLabel.TitleLabel.AdjustsFontSizeToFitWidth = true;
+				AddSubview(totalView = new TotalView{
+					Tapped = () => model.TappedTotal ()
+				});
+				AddSubview(settingsButton = new LongPressButton{
+					Tapped = () => Parent.PresentViewControllerAsync (new UINavigationController (new SettingsViewController ()), true),
+				});
+
+				topNumbers = new NumberBar{
+					Tapped = (i) =>{model.GuessedValue = i;}
+				};
+				topNumbers.SetRange(1,5);
+				bottomNumbers = new NumberBar{
+					Tapped = (i) =>{model.GuessedValue = i;}
+				};;
+				bottomNumbers.SetRange(5,10);
 			}
 
 			ViewModel model;
@@ -108,7 +133,7 @@ namespace ToddlerAddition
 				firstCard.Clear ();
 				secondCard.Clear ();
 				totalView.Clear ();
-
+				HideNumbers ();
 				firstCard.Items = model.FirstItems.Select (x => new ItemView (x) {
 					Tapped = (i) => {
 						i.Select (model.FirstCount);
@@ -137,9 +162,28 @@ namespace ToddlerAddition
 				};
 				model.OneCompleted = async () => {
 					await Task.Delay(1000);
-					PulseOperator();
-					SoundPlayer.SpeakPlus();
+					if(!model.AreBothFinished()){
+						PulseOperator();
+						SoundPlayer.SpeakPlus();
+					}
+					else if(model.Level == 1)
+					{
+						await SoundPlayer.SpeakQuestion();
+						totalView.Activated();
+					}
+					else
+					{
+						await SoundPlayer.SpeakQuestion();
+						ShowNumbers();
+					}
 				};
+				model.FlipTotal = () => {
+					UpdateTotal();
+				};
+				model.WrongValue = () => {
+					//TODO: play error
+				};
+
 			}
 			public void UpdateTotal()
 			{
@@ -165,12 +209,47 @@ namespace ToddlerAddition
 			{
 				totalView.Pulse ();
 			}
+			public void ShowNumbers()
+			{
+				if (topNumbers.Superview != this) {
+					var frame = new RectangleF (0, -padding, Bounds.Width, padding);
+					topNumbers.Frame = frame;
+					frame.Y = Bounds.Bottom;
+					bottomNumbers.Frame = frame;
+					AddSubview (topNumbers);
+					AddSubview (bottomNumbers);
+					AnimateAsync (.3, () => {
+						frame.Y -= frame.Height;
+						bottomNumbers.Frame = frame;
 
+						frame.Y = 0;
+						topNumbers.Frame = frame;
+					});
+				}
+			}
+
+			public async void HideNumbers()
+			{
+				if (topNumbers.Superview != this)
+					return;
+				var frame = topNumbers.Frame;
+				await AnimateAsync (.3, () => {
+					frame.Y = -frame.Height;
+					topNumbers.Frame = frame;
+
+					frame.Y = Bounds.Bottom;
+					bottomNumbers.Frame = frame;
+				});
+
+				topNumbers.RemoveFromSuperview ();
+				bottomNumbers.RemoveFromSuperview ();
+			}
+
+			const float padding = 50;
 			public override void LayoutSubviews ()
 			{
 				base.LayoutSubviews ();
 
-				const float padding = 50;
 
 				var width = ((Bounds.Width - padding) / 3) - padding;
 				var height = Bounds.Height - (padding * 2);
@@ -187,6 +266,13 @@ namespace ToddlerAddition
 
 				frame.X = frame.Right + padding;
 				totalView.Frame = frame;
+
+				frame = Bounds;
+				frame.Y = frame.Bottom - 50;
+				frame.Height = 44;
+				frame.X = 10;
+				frame.Width = 44;
+				settingsButton.Frame = frame;
 
 			}
 		}

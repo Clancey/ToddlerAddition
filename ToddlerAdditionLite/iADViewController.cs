@@ -17,6 +17,7 @@ namespace ToddlerAddition
 		public IADViewController (UIViewController anyVC)
 		{
 			vc = anyVC;
+			AddChildViewController (anyVC);
 		}
 
 		public override void ViewDidLoad ()

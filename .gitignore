@@ -11,3 +11,4 @@ test-results
 *.suo
 Components/
 /*.DotSettings
+[Pp]ackages/

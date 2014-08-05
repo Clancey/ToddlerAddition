@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using MonoTouch.Foundation;
 using iOSHelpers;
+using Punchclock;
 
 namespace ToddlerAddition
 {
@@ -38,6 +39,10 @@ namespace ToddlerAddition
 		{
 
 		}
+		public static async Task SpeakQuestion()
+		{
+
+		}
 
 		public static async Task Speak (int count) {
 
@@ -54,6 +59,7 @@ namespace ToddlerAddition
 
 		public static async Task SpeakIntro()
 		{
+			return;
 			await SpeakRandom (Intro);
 		}
 			
@@ -76,13 +82,15 @@ namespace ToddlerAddition
 		static async Task SpeakRandom(string[] strings)
 		{
 			if (strings.Length == 1) {
-				await PlayAudioFile (strings [0]);
+
+				await SoundQueue.Enqueue(1,()=> PlayAudioFile (strings [0]));
 				return;
 			}
 			var i = random.Next (strings.Length);
 			var file = strings [i];
-			await PlayAudioFile (file);
+			await SoundQueue.Enqueue(1,()=> PlayAudioFile (file));
 		}
+		static OperationQueue SoundQueue = new OperationQueue (1);
 		static List<AVAudioPlayer> players = new List<AVAudioPlayer>();
 		static async Task<bool> PlayAudioFile(string path)
 		{
@@ -96,10 +104,9 @@ namespace ToddlerAddition
 			Console.WriteLine ("play");
 			player.Play ();
 			var result = await tcs.Task;
-
 			Console.WriteLine ("dispose");
 			players.Remove (player);
-			player.Dispose();
+			player = null;
 			return result;
 
 

@@ -6,7 +6,7 @@
     <SharedGUID>{348E0D25-23FF-408B-9956-3EE62D1EDA84}</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Shared</Import_RootNamespace>
+    <Import_RootNamespace>ToddlerAddition</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppDelegate.cs" />
@@ -17,15 +17,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\SoundPlayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ui\AdditionView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ui\CardView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ui\ItemView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ui\MainViewController.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ui\TotalView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\AdditionView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\CardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\ItemView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MainViewController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\TotalView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\LongPressButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\SettingsViewController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\NumberBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Ui\" />
+    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)UI\Controls\" />
   </ItemGroup>
 </Project>

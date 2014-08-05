@@ -7,17 +7,21 @@ using System.Drawing;
 
 namespace ToddlerAddition
 {
-	public class CardView : UIView
+	public class CardView : UIControl
 	{
 		UILabel label;
 		UIView lockView;
+		public Action Tapped { get; set; }
 		public CardView ()
 		{
 			Layer.BorderColor = UIColor.LightGray.CGColor;
 			Layer.CornerRadius = 10f;
 			Layer.BorderWidth = 1f;
 			BackgroundColor = UIColor.LightGray.ColorWithAlpha (.1f);
-
+			this.TouchUpInside += (object sender, EventArgs e) => {
+				if(Tapped != null)
+					Tapped();
+			};
 
 		}
 		public void Clear()
