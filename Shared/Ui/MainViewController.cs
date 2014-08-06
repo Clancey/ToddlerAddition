@@ -71,9 +71,11 @@ namespace ToddlerAddition
 				await Task.Delay(300);
 
 			view.PulseTotal ();
+			if(model.HasFireworks)
+				view.ShowFireworks ();
 			await SoundPlayer.SpeakExcited(model.Total);
-
-			await Task.WhenAll (Task.Delay (2000), SoundPlayer.SpeakCongrats ());
+			await Task.WhenAll (Task.Delay (4000), SoundPlayer.SpeakCongrats ());
+			view.HideFireworks ();
 			newModel ();
 		}
 
@@ -89,6 +91,7 @@ namespace ToddlerAddition
 			LongPressButton settingsButton;
 			NumberBar topNumbers;
 			NumberBar bottomNumbers;
+
 			public MainView()
 			{
 				BackgroundColor = UIColor.White;
@@ -124,8 +127,19 @@ namespace ToddlerAddition
 					Tapped = (i) =>{model.GuessedValue = i;}
 				};;
 				bottomNumbers.SetRange(5,10);
+				fireworks = new FireworksView();
+				fireworks.Start();
 			}
 
+			public void ShowFireworks()
+			{
+				AddSubview (fireworks);
+			}
+			public void HideFireworks()
+			{
+				fireworks.RemoveFromSuperview ();
+			}
+			FireworksView fireworks;
 			ViewModel model;
 			public void SetupModel(ViewModel model)
 			{
@@ -250,7 +264,7 @@ namespace ToddlerAddition
 			{
 				base.LayoutSubviews ();
 
-
+				fireworks.Frame = Bounds;
 				var width = ((Bounds.Width - padding) / 3) - padding;
 				var height = Bounds.Height - (padding * 2);
 

@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\SettingsViewController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\NumberBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\FireworksView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

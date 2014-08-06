@@ -96,7 +96,8 @@ namespace ToddlerAddition
 		{
 			if (AreBothFinished ())
 				EqualsTapped = true;
-			FlipTotal ();
+			if(Level == 1)
+				FlipTotal ();
 		}
 
 		public void TappedEquals()
@@ -129,6 +130,11 @@ namespace ToddlerAddition
 				return guessedValue == Total;
 			}
 			return false;
+		}
+
+		public bool HasFireworks
+		{
+			get{ return Level >= 2; }
 		}
 
 		#region IDisposable implementation
