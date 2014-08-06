@@ -126,7 +126,7 @@ namespace ToddlerAddition
 				bottomNumbers = new NumberBar{
 					Tapped = (i) =>{model.GuessedValue = i;}
 				};;
-				bottomNumbers.SetRange(5,10);
+				bottomNumbers.SetRange(6,10);
 				fireworks = new FireworksView();
 				fireworks.Start();
 			}
