@@ -9,6 +9,7 @@ namespace ToddlerAddition
 		public SettingsViewController ()
 		{
 			Title = "Settings";
+			EdgesForExtendedLayout = UIRectEdge.None;
 			this.NavigationItem.LeftBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Done,(s,e)=>{
 				this.DismissViewControllerAsync(true);
 			});
@@ -22,6 +23,7 @@ namespace ToddlerAddition
 			UILabel settings;
 			UILabel language;
 			UIButton languageBtn;
+			SettingsInstructionView mode1;
 			public SettingsView()
 			{
 				BackgroundColor = UIColor.White;
@@ -34,6 +36,13 @@ namespace ToddlerAddition
 				AddSubview(languageBtn = new UIBorderedButton{
 					Title = "English",
 				});
+
+				AddSubview(mode1 = new SettingsInstructionView());
+			}
+			public override void LayoutSubviews ()
+			{
+				base.LayoutSubviews ();
+				mode1.Frame = Bounds;
 			}
 		}
 	}
