@@ -1,7 +1,7 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using MonoTouch.CoreText;
+using UIKit;
+using Foundation;
+using CoreText;
 
 namespace ToddlerAddition
 {

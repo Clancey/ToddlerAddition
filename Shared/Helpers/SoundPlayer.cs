@@ -1,10 +1,10 @@
 ﻿using System;
-using MonoTouch.AVFoundation;
+using AVFoundation;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using MonoTouch.Foundation;
+using Foundation;
 using iOSHelpers;
 using Punchclock;
 

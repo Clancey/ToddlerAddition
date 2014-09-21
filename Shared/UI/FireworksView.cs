@@ -1,8 +1,8 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using MonoTouch.CoreAnimation;
-using MonoTouch.CoreGraphics;
-using MonoTouch.Foundation;
+using UIKit;
+using CoreAnimation;
+using CoreGraphics;
+using Foundation;
 using System.Drawing;
 
 namespace ToddlerAddition
@@ -21,10 +21,10 @@ namespace ToddlerAddition
 			var dataProvider = CGDataProvider.FromFile (fileName);
 			var img = CGImage.FromPNG (dataProvider, null, false, CGColorRenderingIntent.Default);
 			mortor = new CAEmitterLayer {
-				Position =new PointF (Bounds.Width / 2, 0),
+				Position =new CGPoint (Bounds.Width / 2, 0),
 				RenderMode = CAEmitterLayer.RenderAdditive,
 			};
-			var pi = (float)Math.PI;
+			var pi = (nfloat)Math.PI;
 			var rocket =new  CAEmitterCell();
 			rocket.EmissionLongitude = pi / 3;
 			rocket.EmissionLatitude = 0;
@@ -102,7 +102,7 @@ namespace ToddlerAddition
 		{
 			base.LayoutSubviews ();
 			if(mortor != null)
-				mortor.Position = new PointF (Bounds.Width / 2, Bounds.Height);
+				mortor.Position = new CGPoint (Bounds.Width / 2, Bounds.Height);
 
 
 		}

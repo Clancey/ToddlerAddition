@@ -1,8 +1,8 @@
 ﻿using System;
-using MonoTouch.UIKit;
+using UIKit;
 using iOSHelpers;
-using MonoTouch.CoreAnimation;
-using MonoTouch.CoreGraphics;
+using CoreAnimation;
+using CoreGraphics;
 using System.Threading.Tasks;
 
 namespace ToddlerAddition
@@ -57,7 +57,7 @@ namespace ToddlerAddition
 			emptyView.Frame = nestedView.Frame = label.Frame = frame;
 			if (frame.Height < label.Font.LineHeight)
 				label.Font = UIFont.BoldSystemFontOfSize (frame.Height * .9f);
-			label.Center = new System.Drawing.PointF (Bounds.GetMidX (), Bounds.GetMidY ());
+			label.Center = new CGPoint (Bounds.GetMidX (), Bounds.GetMidY ());
 		}
 
 		public void Activated ()

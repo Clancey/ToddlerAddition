@@ -1,9 +1,10 @@
 ﻿using System;
-using MonoTouch.UIKit;
+using UIKit;
 using System.Collections.Generic;
 using iOSHelpers;
 using System.Linq;
 using System.Drawing;
+using CoreGraphics;
 
 namespace ToddlerAddition
 {
@@ -51,7 +52,7 @@ namespace ToddlerAddition
 			if (items.Count > 0) {
 				items.ForEach (x => AddSubview (x));
 				columns = (int)Math.Sqrt (items.Count);
-				rows = (int)Math.Ceiling (items.Count / (float)columns);
+				rows = (int)Math.Ceiling (items.Count / (nfloat)columns);
 			}
 			label = new UILabel {
 				AdjustsFontSizeToFitWidth = true,
@@ -62,7 +63,7 @@ namespace ToddlerAddition
 					ShadowColor = UIColor.Black.CGColor,
 					ShadowOpacity = .25f,
 					ShadowRadius = .3f,
-					ShadowOffset = new SizeF (1f, 1),
+					ShadowOffset = new CGSize (1f, 1),
 				}
 			};
 
@@ -89,11 +90,11 @@ namespace ToddlerAddition
 					var column = (i % columns);
 					int row = i / columns;
 					var tile = this.Subviews [i];
-					float x = column * width;
+					nfloat x = column * width;
 					if (row == lastRow) {
 						x += (width * lastRowOffset);
 					}
-					var frame = new System.Drawing.RectangleF (x, row * height, width, height);
+					var frame = new CGRect (x, row * height, width, height);
 					tile.Frame = frame;
 				}
 			}

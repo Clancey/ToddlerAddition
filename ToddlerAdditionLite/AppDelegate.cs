@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Foundation;
 using UIKit;
 
-namespace ToddlerAddition
+namespace ToddlerAdditionLite
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to
@@ -26,19 +27,13 @@ namespace ToddlerAddition
 		{
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
-
-
-			// Initialize tracker.
-			#if LITE
-			//Tracker = GAI.SharedInstance.GetTracker ("UA-49576326-1");
-			window.RootViewController = new IADViewController(new MainViewController ());
-			#else
-			//Tracker = GAI.SharedInstance.GetTracker ("UA-49576326-2");
-			window.RootViewController = new MainViewController ();
-			#endif
+			
+			// If you have defined a root view controller, set it here:
+			// window.RootViewController = myViewController;
+			
 			// make the window visible
 			window.MakeKeyAndVisible ();
-			SoundPlayer.Init ();
+			
 			return true;
 		}
 	}

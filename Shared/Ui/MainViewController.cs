@@ -1,10 +1,9 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
 using System.Linq;
 using iOSHelpers;
 using System.Threading.Tasks;
-using GoogleAnalytics.iOS;
+using CoreGraphics;
 
 namespace ToddlerAddition
 {
@@ -27,9 +26,9 @@ namespace ToddlerAddition
 			if (model == null)
 				newModel ();
 			view.Parent = this;
-			GAI.SharedInstance.DefaultTracker.Set (GAIConstants.ScreenName, "Main View");
+			//GAI.SharedInstance.DefaultTracker.Set (GAIConstants.ScreenName, "Main View");
 
-			GAI.SharedInstance.DefaultTracker.Send (GAIDictionaryBuilder.CreateAppView ().Build ());
+			//GAI.SharedInstance.DefaultTracker.Send (GAIDictionaryBuilder.CreateAppView ().Build ());
 		}
 		public override void ViewWillDisappear (bool animated)
 		{
@@ -226,7 +225,7 @@ namespace ToddlerAddition
 			public void ShowNumbers()
 			{
 				if (topNumbers.Superview != this) {
-					var frame = new RectangleF (0, -padding, Bounds.Width, padding);
+					var frame = new CGRect (0, -padding, Bounds.Width, padding);
 					topNumbers.Frame = frame;
 					frame.Y = Bounds.Bottom;
 					bottomNumbers.Frame = frame;
@@ -259,7 +258,7 @@ namespace ToddlerAddition
 				bottomNumbers.RemoveFromSuperview ();
 			}
 
-			const float padding = 50;
+			static nfloat padding = 50;
 			public override void LayoutSubviews ()
 			{
 				base.LayoutSubviews ();
@@ -268,15 +267,15 @@ namespace ToddlerAddition
 				var width = ((Bounds.Width - padding) / 3) - padding;
 				var height = Bounds.Height - (padding * 2);
 
-				var frame = new RectangleF (padding, padding, width, height);
+				var frame = new CGRect (padding, padding, width, height);
 				firstCard.Frame = frame;
 
-				operatorLabel.Frame = new RectangleF (frame.Right, padding, padding, height);
+				operatorLabel.Frame = new CGRect (frame.Right, padding, padding, height);
 
 				frame.X = frame.Right + padding;
 				secondCard.Frame = frame;
 
-				equalLabel.Frame = new RectangleF (frame.Right, padding, padding, height);
+				equalLabel.Frame = new CGRect (frame.Right, padding, padding, height);
 
 				frame.X = frame.Right + padding;
 				totalView.Frame = frame;

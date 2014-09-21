@@ -1,7 +1,8 @@
 ﻿using System;
-using MonoTouch.UIKit;
+using UIKit;
 using iOSHelpers;
 using System.Drawing;
+using CoreGraphics;
 
 namespace ToddlerAddition
 {
@@ -21,17 +22,17 @@ namespace ToddlerAddition
 				AddSubview(new UIBorderedButton{
 					Tag = i,
 					Title = i.ToString(),
-					Tapped = (b) => Tapped (b.Tag),
+					Tapped = (b) => Tapped ((int)b.Tag),
 				});
 		}
 
 		public override void LayoutSubviews ()
 		{
 			base.LayoutSubviews ();
-			const float padding = 5f;
+			nfloat padding = 5f;
 			var width = (Bounds.Width / Subviews.Length) - padding;
 			var h = Bounds.Height - (padding * 2);
-			var frame = new RectangleF (padding, padding, width, h);
+			var frame = new CGRect (padding, padding, width, h);
 			foreach (var v in Subviews) {
 				v.Frame = frame;
 				frame.X = frame.Right + padding;

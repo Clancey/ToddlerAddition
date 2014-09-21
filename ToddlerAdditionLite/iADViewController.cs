@@ -1,7 +1,7 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using MonoTouch.iAd;
-using System.Drawing;
+using UIKit;
+using iAd;
+using CoreGraphics;
 using GoogleAdMobAds;
 
 namespace ToddlerAddition
@@ -59,7 +59,7 @@ namespace ToddlerAddition
 				}
 				if (googleAdView == null) {
 					var or =  this.ForOrientation (this.InterfaceOrientation);
-					googleAdView = new GADBannerView (size: or, origin: new PointF (0, 0)) {
+					googleAdView = new GADBannerView (size: or, origin: new CGPoint (0, 0)) {
 						AdUnitID = AdmobID,
 						RootViewController = this
 					};
@@ -120,7 +120,7 @@ namespace ToddlerAddition
 			base.ViewDidAppear (animated);
 			Resize ();
 		}
-		float AdHeight
+		nfloat AdHeight
 		{
 			get{
 				if(iAdView == null && adView == null)
@@ -136,7 +136,7 @@ namespace ToddlerAddition
 			UIView.Animate (.25,
 				() => {
 					if (iAdView != null && !iAdView.Hidden || (adView != null && !adView.Hidden)) {
-						var frame = new RectangleF (0, 0, this.View.Bounds.Width, this.View.Bounds.Height - AdHeight);
+						var frame = new CGRect (0, 0, this.View.Bounds.Width, this.View.Bounds.Height - AdHeight);
 						vc.View.Frame = frame;
 						if(adView != null)
 						{
@@ -149,7 +149,7 @@ namespace ToddlerAddition
 					}
 				});
 			if (iAdView != null)
-				iAdView.Frame = new RectangleF (0, vc.View.Bounds.Height, this.View.Bounds.Width, iAdView.Frame.Height);
+				iAdView.Frame = new CGRect (0, vc.View.Bounds.Height, this.View.Bounds.Width, iAdView.Frame.Height);
 		}
 
 		void HandleAdLoaded (object sender, EventArgs e)

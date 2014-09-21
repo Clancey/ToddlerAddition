@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOSHelpers", "..\iOSHelpers
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{348E0D25-23FF-408B-9956-3EE62D1EDA84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToddlerAdditionLite", "ToddlerAdditionLite\ToddlerAdditionLite.csproj", "{8B871071-725A-4B1F-8E1C-E7A4584B7871}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToddlerAdditionLite", "ToddlerAdditionLite\ToddlerAdditionLite.csproj", "{0AA579B0-A84B-4E2D-BF67-C6898B607565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +19,18 @@ Global
 		AppStore|iPhone = AppStore|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Debug|iPhone.Build.0 = Debug|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Release|iPhone.ActiveCfg = Release|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Release|iPhone.Build.0 = Release|iPhone
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{0AA579B0-A84B-4E2D-BF67-C6898B607565}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{1DFB6531-198F-49D8-B064-288B71959ED4}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{1DFB6531-198F-49D8-B064-288B71959ED4}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
 		{1DFB6531-198F-49D8-B064-288B71959ED4}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
@@ -43,20 +55,8 @@ Global
 		{4483B8BC-4226-4F9A-9418-4E554BF5EF1D}.Release|iPhone.Build.0 = Release|Any CPU
 		{4483B8BC-4226-4F9A-9418-4E554BF5EF1D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{4483B8BC-4226-4F9A-9418-4E554BF5EF1D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Debug|iPhone.Build.0 = Debug|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Release|iPhone.ActiveCfg = Release|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Release|iPhone.Build.0 = Release|iPhone
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{8B871071-725A-4B1F-8E1C-E7A4584B7871}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ToddlerAdditionLite\ToddlerAdditionLite.csproj
+		StartupItem = ToddlerAddition\ToddlerAddition.csproj
 	EndGlobalSection
 EndGlobal
