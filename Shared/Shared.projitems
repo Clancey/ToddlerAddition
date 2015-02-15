@@ -28,6 +28,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\NumberBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\FireworksView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\SettingsInstructionView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\SettingsCardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\CustomProgressBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

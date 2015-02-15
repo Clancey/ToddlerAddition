@@ -8,16 +8,20 @@ namespace ToddlerAddition
 {
 	public partial class IADViewController : UIViewController
 	{
-		UIViewController vc;
+		UIViewController vc {
+			get{ return viewcontroller.Target as UIViewController; }
+			set{ viewcontroller = new WeakReference (value); }
+		}
+		WeakReference viewcontroller;
 		ADBannerView iAdView;
 		GADBannerView googleAdView;
 		UIView adView;
 		const string AdmobID = "a1533a02366e8c3";
 
+
 		public IADViewController (UIViewController anyVC)
 		{
 			vc = anyVC;
-			AddChildViewController (anyVC);
 		}
 
 		public override void ViewDidLoad ()
@@ -25,6 +29,7 @@ namespace ToddlerAddition
 			base.ViewDidLoad ();
 
 			View.AddSubview (vc.View);
+			AddChildViewController (vc);
 
 			SetupiAd ();
 			//SetUpGoogle ();
@@ -59,50 +64,59 @@ namespace ToddlerAddition
 				}
 				if (googleAdView == null) {
 					var or =  this.ForOrientation (this.InterfaceOrientation);
+
 					googleAdView = new GADBannerView (size: or, origin: new CGPoint (0, 0)) {
 						AdUnitID = AdmobID,
-						RootViewController = this
+						RootViewController = this,
+						Hidden = true,
 					};
-
-					googleAdView.DidReceiveAd += (object sender, EventArgs e) => {
-						if (adView == null)
-							return;
-						if (adView.Superview != View)
-							View.AddSubview (adView);
-						adView.Hidden = false;
-						Resize ();
-					};
-					googleAdView.DidFailToReceiveAd += (object sender, GADBannerViewErrorEventArgs e) => {
-						Console.WriteLine (e.Error);
-						if (adView == null)
-							return;
-						adView.Hidden = true;
-						;
-						Resize ();
-						SetupiAd ();
-					};
-				
+					googleAdView.BackgroundColor = UIColor.Black;
+					googleAdView.DidReceiveAd += HandleDidReceiveGoogleAd;
+					googleAdView.DidFailToReceiveAd += HandleDidFailToReceiveGoogleAd;				
 					View.AddSubview (googleAdView);
 				}
 				adView = googleAdView;
 				googleAdView.LoadRequest (GADRequest.Request);
 			} catch (Exception ex) {
 				Console.WriteLine (ex);
-				Resize ();
 			}
-		}
-
-		public override void DidRotate (UIInterfaceOrientation fromInterfaceOrientation)
-		{
-			base.DidRotate (fromInterfaceOrientation);
 			Resize ();
 		}
+		void HandleDidReceiveGoogleAd (object sender, EventArgs e)
+		{
+			if(adView == null)
+				return;
+			if (adView.Superview == null || adView.Superview != View)
+				View.AddSubview (adView);
+			adView.Hidden = false;
+			Resize ();
+		}
+
+		void HandleDidFailToReceiveGoogleAd (object sender, GADBannerViewErrorEventArgs e)
+		{
+			Console.WriteLine (e.Error);
+			if (adView == null)
+				return;
+			adView.Hidden = true;
+			;
+			Resize ();
+			SetupiAd ();
+
+		}
+
+		public override void ViewDidLayoutSubviews ()
+		{
+			base.ViewDidLayoutSubviews ();
+			Resize ();
+		}
+
 		public override void WillRotate (UIInterfaceOrientation toInterfaceOrientation, double duration)
 		{
 			base.WillRotate (toInterfaceOrientation, duration);
 
 			if (googleAdView != null)
 				googleAdView.AdSize = ForOrientation (toInterfaceOrientation);
+
 		}
 
 		GADAdSize ForOrientation(UIInterfaceOrientation orientation)
@@ -130,8 +144,39 @@ namespace ToddlerAddition
 				return iAdView.Frame.Height;
 			}
 		}
+		protected override void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (disposing) {
+				try{
+					if(googleAdView != null){
+						googleAdView.DidReceiveAd -= HandleDidReceiveGoogleAd;
+						googleAdView.DidFailToReceiveAd -= HandleDidFailToReceiveGoogleAd;
+						googleAdView = null;
+					}
+				}
+				catch(Exception ex){
+					Console.WriteLine (ex);
+				}
+				try{ 
+					if(iAdView != null){
+						iAdView.FailedToReceiveAd -= HandleFailedToReceiveAd;
+						iAdView.AdLoaded -= HandleAdLoaded;
+						iAdView = null;
+					}
+				}
+				catch(Exception ex){
+					Console.WriteLine (ex);
+				}
+			}
+		}
 		void Resize ()
 		{
+			if (adView != null) {
+				var oldFrame = adView.Frame;
+				oldFrame.Y = vc.View.Frame.Bottom;
+				adView.Frame = oldFrame;
+			}
 
 			UIView.Animate (.25,
 				() => {
@@ -149,7 +194,7 @@ namespace ToddlerAddition
 					}
 				});
 			if (iAdView != null)
-				iAdView.Frame = new CGRect (0, vc.View.Bounds.Height, this.View.Bounds.Width, iAdView.Frame.Height);
+				iAdView.Frame = new CGRect (0, this.View.Bounds.Height - AdHeight, this.View.Bounds.Width, iAdView.Frame.Height);
 		}
 
 		void HandleAdLoaded (object sender, EventArgs e)
@@ -172,4 +217,3 @@ namespace ToddlerAddition
 		}
 	}
 }
-

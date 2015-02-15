@@ -23,26 +23,55 @@ namespace ToddlerAddition
 			UILabel settings;
 			UILabel language;
 			UIButton languageBtn;
-			SettingsInstructionView mode1;
+			//SettingsInstructionView mode1;
+			SettingsCardView card1,card2,card3;
 			public SettingsView()
 			{
 				BackgroundColor = UIColor.White;
 				Add(settings = new UILabel{
 					Text = "Settings"
 				});
-				AddSubview(language = new UILabel{
+				Add(language = new UILabel{
 					Text = "Language",
 				});
-				AddSubview(languageBtn = new UIBorderedButton{
+				Add(languageBtn = new UIBorderedButton{
 					Title = "English",
 				});
 
-				AddSubview(mode1 = new SettingsInstructionView());
+				Add(card1 = new SettingsCardView{
+					Title = "Level 1:",
+					Subtitle = "Learn",
+					Progress = 1,
+				});
+
+				Add(card2 = new SettingsCardView{
+					Title = "Level 2:",
+					Subtitle = "Practice",
+					Progress = .75f,
+				});
+
+				Add(card3 = new SettingsCardView{
+					Title = "Level 3:",
+					Subtitle = "Quiz",
+				});
 			}
 			public override void LayoutSubviews ()
 			{
 				base.LayoutSubviews ();
-				mode1.Frame = Bounds;
+				var frame = Bounds;
+				const float padding = 10f;
+				frame.Y = 40;
+				frame.Height -= frame.Y;
+				frame.Width -= padding * 4;
+				frame.Width /= 3;
+				frame.X = padding;
+				card1.Frame = frame;
+
+				frame.X = frame.Right + padding;
+				card2.Frame = frame;
+
+				frame.X = frame.Right + padding;
+				card3.Frame = frame;
 			}
 		}
 	}

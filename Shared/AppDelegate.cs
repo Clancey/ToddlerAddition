@@ -30,10 +30,8 @@ namespace ToddlerAddition
 
 			// Initialize tracker.
 			#if LITE
-			//Tracker = GAI.SharedInstance.GetTracker ("UA-49576326-1");
 			window.RootViewController = new IADViewController(new MainViewController ());
 			#else
-			//Tracker = GAI.SharedInstance.GetTracker ("UA-49576326-2");
 			window.RootViewController = new MainViewController ();
 			#endif
 			// make the window visible
